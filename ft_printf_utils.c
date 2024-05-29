@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:40:57 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/05/29 17:02:53 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:39:23 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ char	*ft_itoa(int n)
 	return (result);
 }
 
-char	*ft_uitoa(unsigned int n)
+char	*ft_uitoa(unsigned long int n)
 {
-	unsigned int	nb;
+	unsigned long int	nb;
 	int			size;
 	char		*result;
 

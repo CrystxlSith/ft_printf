@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:05:59 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/05/29 18:03:26 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:52:03 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ int	print_pars(const char c, va_list args)
 		count += print_unsigned(va_arg(args, unsigned int));
 	if (c == 'x' || c == 'X')
 		count += ft_print_hex(va_arg(args,unsigned int), c);
-	// if (c == 'X')
-	// if (c == 'p')
+	if (c == 'p')
+		count += ft_print_ptr(va_arg(args, unsigned long int));
 	if (c == '%')
-		count += ft_purcent();
+		count += ft_percent();
 	return (count);
 }
 
@@ -103,10 +103,11 @@ int	ft_printf(const char *s, ...)
 
 int main() {
 	int	count;
-	unsigned int	i = 963254;
-	count = ft_printf("\n%X\n", i);
+	int var = 10;
+	int	i = 5;
+	count = ft_printf("\n%d\n%d", var, i);
 	ft_putnbr(count);
-	count = printf("\n%X\n", i);
+	count = printf("\n%d\n%d", var, i);
 	ft_putnbr(count);
 	return 0;
 }
