@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:05:59 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/05/28 14:56:49 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:48:41 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,57 @@
 #include <stdio.h>
 //va_start, va_arg, va_copy, va_end
 
-int	parsing(const char *str, va_list args)
+int	print_char(int c)
 {
-	
+	return (write(1, &c, 1));
+}
+
+int	print_str(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i += print_char((int)str[i]);
+	return (i);
+}
+
+int	print_nb(int nb)
+{
+	char	*str;
+	int	len;
+
+	str = ft_itoa(nb);
+	len = print_str(str);
+	free(str);
+	return (len);
+}
+int	ft_purcent()
+{
+	return (print_char('%'));
+}
+// int	print_hex(int p, int base)
+// {
+// 	return (0);
+// }
+
+int	print_pars(const char c, va_list args)
+{
+	int	count;
+
+	count = 0;
+	if (c == 'c')
+		count += print_char(va_arg(args, int));
+	if (c == 's')
+		count += print_str(va_arg(args, char *));
+	if (c == 'd' || c == 'i')
+		count += print_nb(va_arg(args, int));
+	// if (c == 'u')
+	// if (c == 'x')
+	// if (c == 'X')
+	if (c == '%')
+		count += ft_purcent();
+	return (count);
 }
 
 
@@ -27,27 +75,28 @@ int	ft_printf(const char *s, ...)
 {
 	va_list	args;
 	int	i;
-	int	len;
-	char	*str;
 	
 	i = 0;
-	len = 0;
-	// str = ft_strdup(s);
 	va_start(args, s);
-	while (s[i])
+	while (*s)
 	{
-		i++
+		if (*s == '%')
+			i += print_pars(*(++s), args);
+		else
+			i += write(1, s, 1); 
+		s++;
 	}
-	
-	len = parsing(str, args);
 	va_end(args);
-	free(str);
-	return (len);
+	return (i);
 	
 }
 
 int main() {
 	int	count;
-	count = ft_printf("%d", i);
+	// int	i = 502658;
+	count = ft_printf("%%\n");
+	ft_putnbr(count);
+	count = printf("%%\n");
+	ft_putnbr(count);
     return 0;
 }
