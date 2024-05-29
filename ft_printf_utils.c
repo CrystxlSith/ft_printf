@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:40:57 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/05/29 16:42:49 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:02:53 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,35 @@ int	sizeint(long int n)
 char	*ft_itoa(int n)
 {
 	long int	nb;
+	int			size;
+	char		*result;
+
+	nb = n;
+	size = sizeint(nb);
+	if (nb < 0)
+		size++;
+	if (nb == 0)
+		return (ft_strdup("0"));
+	result = (char *)malloc(sizeof(char) * (size + 1));
+	if (!result)
+		return (NULL);
+	if (nb < 0)
+	{
+		result[0] = '-';
+		nb *= -1;
+	}
+	result[size] = '\0';
+	while (nb)
+	{
+		result[--size] = (nb % 10) + 48;
+		nb /= 10;
+	}
+	return (result);
+}
+
+char	*ft_uitoa(unsigned int n)
+{
+	unsigned int	nb;
 	int			size;
 	char		*result;
 
