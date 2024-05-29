@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:42:38 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/05/29 17:04:01 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:57:41 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@
 # include <limits.h>
 # include "libft/libft.h"
 
+int	print_nb(int nb);
 char	*ft_uitoa(unsigned int n);
+int	ft_print_hex(unsigned int i, char c);
 void	ft_putnbr(int n);
+int	print_char(int c);
 void	ft_putchar(char c);
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *s);
