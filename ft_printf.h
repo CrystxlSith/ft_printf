@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:42:38 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/05/29 18:45:43 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:12:02 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ int	ft_print_ptr(unsigned long int i);
 int	print_nb(int nb);
 char	*ft_uitoa(unsigned long int n);
 int	ft_print_hex(unsigned int i, char c);
-void	ft_putnbr(int n);
 int	print_char(int c);
-void	ft_putchar(char c);
-char	*ft_itoa(int n);
-char	*ft_strdup(const char *s);
-size_t	ft_strlen(const char *s);
+int	print_unsigned(unsigned int nb);
+int	print_str(char *str);
+int	print_nb(int nb);
+int	print_char(int c);
+int	ft_percent();
+int	ft_printf(const char *s, ...);
+
 
 #endif
