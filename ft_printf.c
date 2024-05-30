@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:05:59 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/05/29 18:52:03 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/05/30 10:50:49 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	print_nb(int nb)
 	free(str);
 	return (len);
 }
-int	ft_purcent()
+int	ft_percent()
 {
 	return (print_char('%'));
 }
@@ -102,12 +102,13 @@ int	ft_printf(const char *s, ...)
 }
 
 int main() {
+	int var = 42;
 	int	count;
-	int var = 10;
-	int	i = 5;
-	count = ft_printf("\n%d\n%d", var, i);
+	int *ptr = &var;
+	count = 0;
+    	count = ft_printf("Address of var: %p\n", (void *)ptr);
 	ft_putnbr(count);
-	count = printf("\n%d\n%d", var, i);
+	count = printf("\nAddress of var: %p\n", (void *)ptr);
 	ft_putnbr(count);
 	return 0;
 }

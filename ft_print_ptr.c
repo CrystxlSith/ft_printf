@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 18:22:50 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/05/29 18:33:45 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/05/30 10:57:46 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,13 @@ void	print_ptr(unsigned long int i)
 		print_ptr(i / 16);
 		print_ptr(i % 16);
 	}
-	if (i < 10)
-		print_nb(i + '0');
 	else
-		print_nb(i - 10 + 'a');
+	{
+		if (i < 10)
+			print_char(i + '0');
+		else
+			print_char(i - 10 + 'a');
+	}
 }
 
 int	ft_print_ptr(unsigned long int i)
@@ -48,7 +51,7 @@ int	ft_print_ptr(unsigned long int i)
 		len += write(1, "0", 1);
 	else
 	{
-		print_char(i);
+		print_ptr(i);
 		len += len_ad(i);
 	}
 	return (len);
