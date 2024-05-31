@@ -3,58 +3,37 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+         #
+#    By: crystal <crystal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/29 15:13:11 by jopfeiff          #+#    #+#              #
-#    Updated: 2024/05/30 14:14:49 by jopfeiff         ###   ########.fr        #
+#    Updated: 2024/05/31 14:24:51 by crystal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_printf.c \
-	ft_printf_utils.c \
-	ft_print_hex.c \
-	ft_print_nb.c \
-	ft_print_unsigned.c \
-	ft_print_str.c \
-	ft_print_char.c \
-	ft_print_ptr.c
 
-# Définir les variables
-LIBNAME = libft.a
-RM = rm -f
+SRCS = ft_printf.c srcs/ft_printf_utils.c srcs/ft_print_hex.c srcs/ft_print_nb.c srcs/ft_print_unsigned.c srcs/ft_print_str.c srcs/ft_print_char.c srcs/ft_print_ptr.c
 CC = cc
-LIBC = ar rcs
-CFLAGS = -Wall -Wextra -Werror
-OBJS = $(SRCS:.c=.o)
+CFLAGS = -Wall -Wextra -Werror -I./includes/
+RM = rm -rf
 NAME = libftprintf.a
-LIBDIR = ./libft
+OBJS = $(SRCS:.c=.o)
 
-# Règle par défaut
 all: $(NAME)
 
-# libft make
-mylibft:
-	@make -C $(LIBDIR)
-	@cp $(LIBDIR)/$(LIBNAME) .
-	@mv $(LIBNAME) $(NAME)
-
-# Règle pour créer la bibliothèque
-$(NAME): mylibft $(OBJS)
-	${LIBC} $(NAME) $(OBJS)
-
-# Règle de nettoyage
+$(NAME): $(OBJS)
+	$(MAKE) -C ./libft
+	cp libft/libft.a $(NAME)
+	ar rc $(NAME) $(OBJS)
 clean:
-	${RM} $(OBJS)
-	@cd ${LIBDIR} && make clean
-
-main: main.c ${NAME}
-	${CC} ${CFLAGS} -o main main.c -L. -lftprintf
-
+	$(MAKE) clean -C ./libft
+	$(RM) $(OBJS)
 fclean: clean
-	${RM} $(NAME)
-	@cd ${LIBDIR} && make fclean
-
+	$(MAKE) fclean -C ./libft
+	$(RM) $(NAME)
 re: fclean all
 
 .PHONY: all clean fclean re
+
+.SILENT:
+
 

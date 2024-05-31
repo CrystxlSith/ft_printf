@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 18:22:50 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/05/30 10:57:46 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:10:03 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ int	ft_print_ptr(unsigned long int i)
 	int	len;
 
 	len = 0;
-	len += write(1, "0x", 2);
 	if (i == 0)
-		len += write(1, "0", 1);
-	else
 	{
-		print_ptr(i);
-		len += len_ad(i);
+		len += write (1, "(nil)", 5);
+		return (len);
 	}
+	len += write(1, "0x", 2);
+	print_ptr(i);
+	len += len_ad(i);
 	return (len);
 }

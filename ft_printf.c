@@ -3,23 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 14:05:59 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/05/30 13:43:58 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/05/31 14:36:52 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "ft_printf.h"
+#include "includes/ft_printf.h"
 #include <stdarg.h>
 #include <stdio.h>
 //va_start, va_arg, va_copy, va_end
-
-
-
-
-
 
 int	print_pars(const char c, va_list args)
 {
@@ -39,7 +34,7 @@ int	print_pars(const char c, va_list args)
 	if (c == 'p')
 		count += ft_print_ptr(va_arg(args, unsigned long int));
 	if (c == '%')
-		count += ft_percent();
+		return (write(1, "%", 1));
 	return (count);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 17:36:23 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/05/29 18:00:57 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:23:06 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	print(unsigned int i, const char c)
 int	ft_print_hex(unsigned int i, char c)
 {
 	if (i == 0)
-		write(1, "0", 1);
+		return(write(1, "0", 1));
 	else
 		print(i, c);
 	return (hex_len(i));
